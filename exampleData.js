@@ -3,43 +3,43 @@ const exampleData = {
   Issued: Date.parse('2020-10-12') / 1000,
   Due: Date.parse('2020-11-12') / 1000,
 
-  Invoicer: {
+  Auftragr: {
     Name: 'Thunderous Applause',
-    Street1: '812 Automated Rd',
-    Street2: null,
-    City: 'New York',
+    Strasse1: '812 Automated Rd',
+    Strasse2: null,
+    Ort: 'New York',
     State: 'NY',
-    Zip: '10003',
+    Plz: '10003',
     Email: 'applause@thunder.com',
     Phone: '+1-800-111-1111',
     Website: 'applause.com',
   },
 
-  Client: {
+  Kunde: {
     Name: 'Monkeys Juggling',
-    Street1: '100 Banana St',
-    City: 'Bananaberg',
+    Strasse1: '100 Banana St',
+    Ort: 'Bananaberg',
     State: 'NJ',
-    Zip: '07048',
+    Plz: '07048',
   },
 
-  Items: [
+  Positionen: [
     {
-      Description: 'Wolf Whistle',
-      Price: 35,
-      Quantity: 3,
-      Total: 105,
+      Produkt: 'Wolf Whistle',
+      Preis: 35,
+      Menge: 3,
+      Summe: 105,
     },
     {
-      Description: 'Bravo',
-      Price: 30,
-      Quantity: 17,
-      Total: 510,
+      Produkt: 'Bravo',
+      Preis: 30,
+      Menge: 17,
+      Summe: 510,
     },
   ],
 
-  Subtotal: 615,
+  Netto: 615,
   Deduction: null,
-  Taxes: null,
-  Total: 615,
+  USt: null,
+  Summe: 615,
 };

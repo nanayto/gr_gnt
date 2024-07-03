@@ -2,18 +2,18 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>Grist Invoice</title>
+    <title>Grist Auftrag</title>
 
-    <!-- A template for showing an invoice in a Custom Widget in Grist. -->
+    <!-- A template for showing an auftrag in a Custom Widget in Grist. -->
     <!-- Uses Vue.js, moment, and the Grist Plugin API -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vue/2.5.3/vue.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://docs.getgrist.com/grist-plugin-api.js"></script>
 
-    <script src="invoice.js?ver=11"></script>
+    <script src="auftrag.js?ver=11"></script>
     <script src="exampleData.js"></script>
 
-    <link rel="stylesheet" href="invoice.css?ver=17">
+    <link rel="stylesheet" href="auftrag.css?ver=17">
   </head>
   <body>
     <div id="app">
@@ -27,38 +27,36 @@
           </ul>
           <p>Examples:</p>
           <ul>
-            <li><a class="button" href="index.html?demo=1">A filled out invoice</a></li>
-            <li><a class="button" href="index.html?labels=1">A labelled invoice</a></li>
+            <li><a class="button" href="index.html?demo=1">A filled out auftrag</a></li>
+            <li><a class="button" href="index.html?labels=1">A labelled auftrag</a></li>
           </ul>
         </template>
         <template v-else>
           {{ status }}
         </template>
       </div>
-      <template v-if="invoice">
+      <template v-if="auftrag">
         <div class="top">
           <div class="block">
             <div class="header">
-              <div class="meta title">Invoice</div>
+              <div class="meta title">Auftrag</div>
             </div>
-            <div class="info"><span class="meta">Invoice Number</span> #{{ invoice.Number }}</div>
-            <div class="info" v-if="invoice.Issued"><div class="meta date-tag">Issued</div> {{ invoice.Issued | asDate }}</div>
-            <div class="info" v-if="invoice.Due"><div class="meta date-tag">Due</div> {{ invoice.Due | asDate }}</div>
+            <div class="info"><span class="meta">Auftragsdatum</span> {{ auftrag.Issued | asDate }}</div>
           </div>
           
           <div class="supplier">
-            <div v-for="business in (invoice.Invoicer ? [invoice.Invoicer] : [])">
+            <div v-for="business in (auftrag.Auftragr ? [auftrag.Auftragr] : [])">
               <template v-if="typeof(business) === 'string'">
                 <div class="address newlined">{{ business }}</div>
               </template>
               <template v-else>
                 <div class="address">
                   <span class="name">{{ business.Name }}</span><br />
-                  {{ business.Street1 }}<br />
-                  <template v-if="business.Street2">
-                    {{ business.Street2 }}<br />
+                  {{ business.Strasse1 }}<br />
+                  <template v-if="business.Strasse2">
+                    {{ business.Strasse2 }}<br />
                   </template>
-                  {{ business.City }} {{ business.State }} {{ business.Zip }}<br />
+                  {{ business.Ort }} {{ business.State }} {{ business.Plz }}<br />
                   <template v-if="business.Country">
                     {{ business.Country }}<br />
                   </template>
@@ -77,21 +75,21 @@
           </div>
         </div>
         
-        <div class="client" v-for="business in (invoice.Client ? [invoice.Client] : [])">
-          <div class="title">Client</div>
+        <div class="kunde" v-for="business in (auftrag.Kunde ? [auftrag.Kunde] : [])">
+          <div class="title">Kunde</div>
           <div class="details">
             <template v-if="typeof(business) === 'string'">
               <div class="newlined">{{ business }}</div>
             </template>
             <template v-else>
               <div>{{ business.Name }}</div>
-              <template v-if="business.Street1">
-                {{ business.Street1 }},
+              <template v-if="business.Strasse1">
+                {{ business.Strasse1 }},
               </template>
-              <template v-if="business.Street2">
-                {{ business.Street2 }},
+              <template v-if="business.Strasse2">
+                {{ business.Strasse2 }},
               </template>
-              {{ business.City }} {{ business.State }} {{ business.Zip }}
+              {{ business.Ort }} {{ business.State }} {{ business.Plz }}
               <template v-if="business.Country">
                 <br />{{ business.Country }}
               </template>
@@ -99,57 +97,57 @@
           </div>
         </div>
 
-        <table class="items">
-          <template v-if="!Array.isArray(invoice.Items)">
+        <table class="positionen">
+          <template v-if="!Array.isArray(auftrag.Positionen)">
             <tr>
-              <th>Description</th>
-              <th class="money">Total</th>
+              <th>Produkt</th>
+              <th class="money">Summe</th>
             </tr>
             <tr>
-              <td>{{ invoice.Items }}</td>
-              <td class="money">{{ invoice.Total | currency }}</td>
+              <td>{{ auftrag.Positionen }}</td>
+              <td class="money">{{ auftrag.Summe | currency }}</td>
             </tr>
           </template>
           <template v-else>
             <tr>
-              <th>Description</th>
-              <th class="money">Unit Price</th>
-              <th class="number">Quantity</th>
-              <th class="money">Total</th>
+              <th>Produkt</th>
+              <th class="money">Preis</th>
+              <th class="number">Menge</th>
+              <th class="money">Betrag</th>
             </tr>
-            <tr v-for="item in invoice.Items">
-              <td>{{ item.Description }}</td>
-              <td class="money">{{ item.Price | currency }}</td>
-              <td class="number">{{ item.Quantity }}</td>
-              <td class="money">{{ item.Total | currency }}</td>
+            <tr v-for="item in auftrag.Positionen">
+              <td>{{ item.Produkt }}</td>
+              <td class="money" width="12%">{{ item.Preis | currency }}</td>
+              <td class="number" width="12%">{{ item.Menge }}</td>
+              <td class="money" width="12%">{{ item.Summe | currency }}</td>
             </tr>
           </template>
         </table>
 
         <div class="summary">
           <div class="part">
-            <div class="title">Subtotal</div>
-            <div class="details">{{ invoice.Subtotal | currency }}</div>
+            <div class="title">Netto</div>
+            <div class="details">{{ auftrag.Netto | currency }}</div>
           </div>
           <div class="part">
-            <div class="title">Deduction</div>
-            <div class="details">{{ invoice.Deduction | currency }}</div>
+            <div class="title">USt 20%</div>
+            <div class="details">{{ auftrag.USt | currency }}</div>
           </div>
-          <div class="part">
-            <div class="title">Taxes</div>
-            <div class="details">{{ invoice.Taxes | currency }}</div>
-          </div>
-          <div class="total">
-            <div class="title">Total</div>
-            <div class="details">{{ invoice.Total | currency }}</div>
+          <div class="summe">
+            <div class="title">Endsumme</div>
+            <div class="details">{{ auftrag.Summe | currency }}</div>
           </div>
         </div>
 
-        <template v-if="invoice.Note">
-          <p class="note">{{ invoice.Note }}</p>
+        <div class="notice">
+
+        </div>
+
+        <template v-if="auftrag.Kommentar">
+          <p class="kommentar">{{ auftrag.Kommentar }}</p>
         </template>
 
-        <template v-for="help in (invoice.Help ? [invoice.Help] : [])">
+        <template v-for="help in (auftrag.Help ? [auftrag.Help] : [])">
           <div class="help">
             <div class="help-close">
               Add <span class="column-name">Due</span> or <span class="column-name">Issued</span> date to hide this help.
@@ -169,7 +167,7 @@
                   </td>
                 </tr>
               </table>
-              <template v-if="invoice.SuggestReferencesColumn">
+              <template v-if="auftrag.SuggestReferencesColumn">
                 <div>For structured address and item information, add a <span class="column-name">References</span> column with this formula:</div>
                 <div>
                   <pre>RECORD(rec, expand_refs=1)</pre>
@@ -178,12 +176,6 @@
             </div>
           </div>
         </template>
-
-        <div class="footer">
-          <div class="thanks">
-            Thank you!
-          </div>
-        </div>
 
         <div class="print">
           <a href="javascript:window.print()">Print</a>

@@ -1,12 +1,12 @@
 {
-  "name": "@gristlabs/widget-invoices",
-  "description": "A template for showing an invoice in a Custom Widget in Grist.",
+  "name": "@gristlabs/widget-auftrags",
+  "produkt": "A template for showing an auftrag in a Custom Widget in Grist.",
   "homePage": "https://github.com/gristlabs/grist-widget",
   "version": "0.0.1",
   "grist": {
-    "name": "Invoices",
-    "url": "https://gristlabs.github.io/grist-widget/invoices",
-    "widgetId": "@gristlabs/widget-invoices",
+    "name": "Auftrags",
+    "url": "https://gristlabs.github.io/grist-widget/auftrags",
+    "widgetId": "@gristlabs/widget-auftrags",
     "published": true,
     "accessLevel": "read table",
     "renderAfterReady": true
