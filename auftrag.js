@@ -7,8 +7,8 @@ function ready(fn) {
 }
 
 function addDemo(row) {
-  if (!row.Issued && !row.Due) {
-    for (const key of ['Number', 'Issued', 'Due']) {
+  if (!row.Datum && !row.Due) {
+    for (const key of ['Number', 'Datum', 'Due']) {
       if (!row[key]) { row[key] = key; }
     }
     for (const key of ['Netto', 'Deduction', 'USt', 'Summe']) {
@@ -151,8 +151,8 @@ function updateAuftrag(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Kunde', 'Positionen', 'Summe', 'Auftragr', 'Due', 'Issued', 'Netto', 'Deduction', 'USt', 'Kommentar'];
-    if (!(row.Due || row.Issued)) {
+    const importance = ['Number', 'Kunde', 'Positionen', 'Summe', 'Auftragr', 'Due', 'Datum', 'Netto', 'Deduction', 'USt', 'Kommentar'];
+    if (!(row.Due || row.Datum)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};
       help.seen = prepareList(seen);
@@ -168,7 +168,7 @@ function updateAuftrag(row) {
       if (recognized.length > 0) {
         help.recognized = prepareList(recognized);
       }
-      if (!seen.has('References') && !(row.Issued || row.Due)) {
+      if (!seen.has('References') && !(row.Datum || row.Due)) {
         row.SuggestReferencesColumn = true;
       }
     }
