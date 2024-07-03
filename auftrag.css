@@ -3,16 +3,34 @@ body {
   max-width: 800px;
   margin: 0 auto;
   padding: 5px;
+  color: #423D33;
 }
 
+a{
+  color: #14919B;
+}
 .meta {
-  color: #044E54;
-  margin-bottom: 1.2rem
+  color: #423d33;
+  font-weight: bold;
+  margin-bottom: 1.2rem;
 }
 
-.header .title {
-  font-size: 300%;
+.logo {
+  width: 250px;
+  margin-bottom: 1rem;
+}
+
+.main-title {
+  margin-top: 3rem;
+  font-size: 200%;
   font-weight: bold;
+  color: #27241D;
+}
+
+.main-title-small {
+  font-size: 70%;
+  text-transform: uppercase;
+  color: #625D52;
 }
 
 /*
@@ -25,7 +43,11 @@ body {
 }
 */
 .info .meta::after {
-  content: " :";
+  content: ":";
+}
+
+.info {
+  margin-top: 1.2rem;
 }
 
 .supplier {
@@ -49,7 +71,7 @@ body {
 
 .kunde .title, .summary .title {
   margin-left: 4px;
-  color: rgb(0, 0, 0);
+  color: #27241D;
   /*
   text-transform: uppercase;
   */
@@ -70,7 +92,7 @@ table.positionen {
 
 table.positionen th {
   text-align: left;
-  color: rgb(0, 0, 0);
+  color: #27241D;
   /*
   text-transform: uppercase;
   */
@@ -167,6 +189,16 @@ div.summary::after {
 .email::before {
   content: "\2709";
   margin-right: 0.5em;  
+}
+
+.notice::before {
+  content: "\1f6c8";
+  color: #14919B;
+  margin-right: 0.5em;  
+}
+
+.notice {
+  margin-top: 4px;
 }
 
 .thanks {

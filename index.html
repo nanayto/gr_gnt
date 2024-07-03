@@ -39,9 +39,15 @@
         <div class="top">
           <div class="block">
             <div class="header">
-              <div class="meta title">Auftrag</div>
+              <img src="https://www.gntpack.at/media/ff/be/34/1699540642/GNTPack_logo.svg?1699540642" class="logo">
+              
             </div>
             <div class="info"><span class="meta">Auftragsdatum</span> {{ auftrag.Datum | asDate }}</div>
+            <div class="notice">
+              Die Lieferung erfolgt 8 Wochen nach Anzahlung.
+            </div>
+            <div class="main-title">Auftrag</div>
+            <div class="main-title-small">Personalisierte Druckprodukte</div>
           </div>
           
           <div class="supplier">
@@ -139,9 +145,7 @@
           </div>
         </div>
 
-        <div class="notice">
 
-        </div>
 
         <template v-if="auftrag.Kommentar">
           <p class="kommentar">{{ auftrag.Kommentar }}</p>
