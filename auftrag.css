@@ -345,6 +345,15 @@ div.column-name {
   width: 200px;
 }
 
+.checkmark {
+  color: green;
+  font-weight: bold;
+}
+.cross {
+  color: red;
+  font-weight: bold;
+}
+
 .klischee-title,.farbigkeit-title {
   color: #27241D;
   font-weight: 700;
