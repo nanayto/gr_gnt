@@ -89,7 +89,7 @@ Vue.filter('booleanToSymbol', function (value) {
   if (typeof value !== "boolean") {
     return value || '—';  // falsy value would be shown as a dash.
   }
-  return value ? '&#10004;' : '&#10006;';
+  return value ? '<span>&#10004;</span>' : '<span>&#10006;</span>';
 });
 
 Vue.filter('fallback', function(value, str) {
