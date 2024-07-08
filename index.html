@@ -152,7 +152,9 @@
               Klischeekosten:
             </div>
             <div class="klischee-answer">
-              {{ auftrag.Klischeekosten }}
+              <span v-bind:class="{checkmark: klischeekosten, cross: !klischeekosten}">
+                {{ klischeekosten | booleanToSymbol }}
+              </span>
             </div>
           </div>
           <div class="farbigkeit">

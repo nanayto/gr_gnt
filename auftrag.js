@@ -85,6 +85,13 @@ function formatNumberAsUSD(value) {
   return result;
 }
 
+Vue.filter('booleanToSymbol', function (value) {
+  if (typeof value !== "boolean") {
+    return value || '—';  // falsy value would be shown as a dash.
+  }
+  return value ? '✔️' : '❌';
+});
+
 Vue.filter('fallback', function(value, str) {
   if (!value) {
     throw new Error("Please provide column " + str);
