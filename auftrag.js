@@ -151,7 +151,7 @@ function updateAuftrag(row) {
     // Add some guidance about columns.
     const want = new Set(Object.keys(addDemo({})));
     const accepted = new Set(['References']);
-    const importance = ['Number', 'Kunde', 'Positionen', 'Summe', 'Auftragr', 'Datum', 'Netto', 'Deduction', 'USt', 'Kommentar'];
+    const importance = ['Number', 'Kunde', 'Positionen', 'Summe', 'Auftragr', 'Datum', 'Anzahlungsdatum', 'Netto', 'Deduction', 'USt', 'Kommentar', 'Klischeekosten', 'Farbigkeit'];
     if (!(row.Due || row.Datum)) {
       const seen = new Set(Object.keys(row).filter(k => k !== 'id' && k !== '_error_'));
       const help = row.Help = {};

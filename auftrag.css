@@ -17,7 +17,7 @@ a{
 
 .logo {
   width: 250px;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 }
 
 .main-title {
@@ -47,7 +47,7 @@ a{
 }
 
 .info {
-  margin-top: 1.2rem;
+  margin-bottom:0.3rem;
 }
 
 .supplier {
@@ -142,7 +142,7 @@ div.summary {
   display: flex;
   width: 100%;
   padding: 0px;
-  align-positionen: flex-end;
+  align-items: flex-end;
 }
 
 div.summary .part, div.summary .summe {
@@ -339,3 +339,24 @@ div.column-name {
   border-radius: 0.25em;
 }
 
+.klischee {
+  border-bottom: 1px solid #000;
+
+  width: 200px;
+}
+
+.klischee-title,.farbigkeit-title {
+  color: #27241D;
+  font-weight: 700;
+  padding: 8px 4px;
+}
+
+.signature {
+  float:right;
+}
+
+.signature-box {
+  width: 250px;
+  height: 70px;
+  border: 1px solid #000;
+}

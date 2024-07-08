@@ -42,11 +42,12 @@
               <img src="https://www.gntpack.at/media/ff/be/34/1699540642/GNTPack_logo.svg?1699540642" class="logo">
               
             </div>
-            <div class="info"><span class="meta">Auftragsdatum</span> {{ auftrag.Datum | asDate }}</div>
+            <div class="info"><span class="meta">Bestelldatum</span> {{ auftrag.Datum | asDate }}</div>
+            <div class="info"><span class="meta">Anzahlungsdatum</span> {{ auftrag.Datum | asDate }}</div>
             <div class="notice">
               Die Lieferung erfolgt 8 Wochen nach Anzahlung.
             </div>
-            <div class="main-title">Auftrag</div>
+            <div class="main-title">Bestellformular</div>
             <div class="main-title-small">Personalisierte Druckprodukte</div>
           </div>
           
@@ -62,7 +63,7 @@
                   <template v-if="business.Strasse2">
                     {{ business.Strasse2 }}<br />
                   </template>
-                  {{ business.Ort }} {{ business.State }} {{ business.Plz }}<br />
+                  {{ business.Ort }} {{ business.Plz }}<br />
                   <template v-if="business.Country">
                     {{ business.Country }}<br />
                   </template>
@@ -145,6 +146,32 @@
           </div>
         </div>
 
+        <div class="order-details">
+          <div class="klischee">
+            <div class="klischee-title">
+              Klischeekosten:
+            </div>
+            <div class="klischee-answer">
+              {{ auftrag.Klischeekosten }}
+            </div>
+          </div>
+          <div class="farbigkeit">
+            <div class="farbigkeit-title">
+              Farbigkeit:
+            </div>
+            <div class="farbigkeit-answer">
+              {{ auftrag.farbigkeit }}
+            </div>
+          </div>
+        </div>
+
+        <div class="signature">
+          <div class="signature-title">
+            Unterschrift
+          </div>
+          <div class="signature-box">
+          </div>
+        </div>
 
 
         <template v-if="auftrag.Kommentar">
